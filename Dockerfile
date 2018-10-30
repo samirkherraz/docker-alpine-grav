@@ -7,13 +7,17 @@ RUN set -x \
 
 RUN set -x \
     && apk --no-cache --virtual add nginx \
-    && mkdir -p /var/www/ /run/nginx/ \
+    && mkdir -p /run/nginx/ \
+    && rm -R /var/www/* \
     && chown nginx:nginx /var/www/ /run/nginx/
 
+
 RUN set -x \
-    && wget https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} -O /var/www/${GRAV_VERSION}.zip \
-    && su - nginx -s /bin/ash -c "cd /var/www/ && unzip ${GRAV_VERSION}.zip && mv grav-admin html" \
-    && rm /var/www/${GRAV_VERSION}.zip
+    && wget https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} -O /tmp/${GRAV_VERSION}.zip \
+    && unzip /tmp/${GRAV_VERSION}.zip -d /var/www/ \
+    && rm /tmp/${GRAV_VERSION}.zip
+
+VOLUME [ "/var/www/html" ]
 
 
 RUN set -x \

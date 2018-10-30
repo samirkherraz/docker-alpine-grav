@@ -1,0 +1,11 @@
+#!/bin/sh
+
+
+if [ -z "$(ls -A "/var/www/html")" ];
+then
+
+    cp -r /var/www/grav-admin/* /var/www/html/
+    cp -r /var/www/grav-admin/.* /var/www/html/
+    chown nginx:nginx /var/www/html -R
+
+fi
