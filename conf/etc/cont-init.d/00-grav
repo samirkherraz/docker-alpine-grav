@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#!/usr/bin/with-contenv sh
 
 if [ -z "$(ls -A "/var/www/html")" ];
 then

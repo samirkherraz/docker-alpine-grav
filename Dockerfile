@@ -24,14 +24,8 @@ RUN set -x \
     && rm /etc/nginx/conf.d/* \
     && rm /etc/php7/php-fpm.d/* 
 
-ADD init/* /etc/cont-init.d/
+ADD conf/ /
 
 RUN set -x \
-    && chmod +x /etc/cont-init.d/*
-
-ADD phpfpm/* /etc/php7/php-fpm.d/
-ADD nginx/* /etc/nginx/conf.d/
-
-
-
-
+    && chmod +x /etc/cont-init.d/* \
+    && chmod +x /etc/s6/services/*/*
