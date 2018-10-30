@@ -12,11 +12,6 @@ RUN set -x \
     && chown nginx:nginx /var/www/ /run/nginx/
 
 
-RUN set -x \
-    && wget https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} -O /tmp/${GRAV_VERSION}.zip \
-    && unzip /tmp/${GRAV_VERSION}.zip -d /var/www/ \
-    && rm /tmp/${GRAV_VERSION}.zip
-
 VOLUME [ "/var/www/html" ]
 
 
