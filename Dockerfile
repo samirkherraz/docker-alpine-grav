@@ -8,6 +8,7 @@ RUN set -x \
 RUN set -x \
     && apk --no-cache --virtual add nginx \
     && mkdir -p /run/nginx/ \
+    && rm -R /etc/nginx/conf.d/* \
     && rm -R /var/www/* \
     && chown nginx:nginx /var/www/ /run/nginx/
 
