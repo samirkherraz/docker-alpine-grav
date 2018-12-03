@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv sh
 
-if [ -z "$(ls -A "/var/www/garv")" ];
+if [ -z "$(ls -A "/var/www/grav")" ];
 then
     wget https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} -O /tmp/${GRAV_VERSION}.zip \
     unzip /tmp/${GRAV_VERSION}.zip -d /var/www/ \
@@ -8,5 +8,4 @@ then
     mv /var/www/grav-admin /var/www/grav
     chown nginx:nginx /var/www/grav -R
 
-    # auto-install here from ENV
 fi
