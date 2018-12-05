@@ -1,11 +1,16 @@
 #!/usr/bin/with-contenv sh
 
+[ -d /var/www/grav/ ] || mkdir -p /var/www/grav
+
 if [ -z "$(ls -A "/var/www/grav")" ];
 then
     wget https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} -O /tmp/${GRAV_VERSION}.zip
     unzip /tmp/${GRAV_VERSION}.zip -d /var/www/
+    mv /var/www/grav-admin/* /var/www/grav/
+    mv /var/www/grav-admin/.* /var/www/grav/
+    rm /var/www/grav-admin/ -R
     rm /tmp/${GRAV_VERSION}.zip
-    mv /var/www/grav-admin /var/www/grav
+
     chown nginx:nginx /var/www/grav -R
 
 fi
