@@ -4,6 +4,7 @@
 
 if [ -z "$(ls -A "/var/www/grav")" ];
 then
+    GRAV_VERSION=$( curl -s https://api.github.com/repos/getgrav/grav/releases/latest | grep "tag_name" | cut -d "\"" -f4 )
     wget https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} -O /tmp/${GRAV_VERSION}.zip
     unzip /tmp/${GRAV_VERSION}.zip -d /var/www/
     mv /var/www/grav-admin/* /var/www/grav/
